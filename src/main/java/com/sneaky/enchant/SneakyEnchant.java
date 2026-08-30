@@ -41,8 +41,8 @@ public class SneakyEnchant implements ModInitializer {
 
         if (enchants.isEmpty()) return;
 
-        for (int i = 0; i < player.getInventory().size(); i++) {
-            ItemStack stack = player.getInventory().getStack(i);
+        for (int i = 0; i < player.inventory.size(); i++) {
+            ItemStack stack = player.inventory.getStack(i);
             if (stack.isEmpty()) continue;
 
             Map<Enchantment, Integer> map = new HashMap<>();
