@@ -6,13 +6,14 @@ import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.text.Text;
+import net.minecraft.text.LiteralText;
 import net.minecraft.util.registry.Registry;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class SneakyEnchant implements ModInitializer {
     private final Map<ServerPlayerEntity, Boolean> sneakStates = new HashMap<>();
@@ -45,17 +46,17 @@ public class SneakyEnchant implements ModInitializer {
             if (stack.isEmpty()) continue;
 
             Map<Enchantment, Integer> map = new HashMap<>();
-            int numEnchants = 1 + player.getRandom().nextInt(3);
+            int numEnchants = 1 + ThreadLocalRandom.current().nextInt(3);
             
             for (int j = 0; j < numEnchants; j++) {
-                Enchantment ench = enchants.get(player.getRandom().nextInt(enchants.size()));
-                int level = 1 + player.getRandom().nextInt(5);
+                Enchantment ench = enchants.get(ThreadLocalRandom.current().nextInt(enchants.size()));
+                int level = 1 + ThreadLocalRandom.current().nextInt(5);
                 map.put(ench, level);
             }
             
             EnchantmentHelper.set(map, stack);
         }
         
-        player.sendMessage(Text.of("§d§l[MAGIA] §r§fSeus itens foram encantados aleatoriamente!"), false);
+        player.sendMessage(new LiteralText("§d§l[MAGIA] §r§fSeus itens foram encantados aleatoriamente!"), false);
     }
 }
