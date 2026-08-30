@@ -24,7 +24,6 @@ public class SneakyEnchant implements ModInitializer {
                 boolean wasSneaking = sneakStates.getOrDefault(player, false);
                 boolean isSneaking = player.isSneaking();
 
-                // Dispara apenas no momento que começa a agachar
                 if (isSneaking && !wasSneaking) {
                     enchantInventory(player);
                 }
@@ -46,11 +45,11 @@ public class SneakyEnchant implements ModInitializer {
             if (stack.isEmpty()) continue;
 
             Map<Enchantment, Integer> map = new HashMap<>();
-            int numEnchants = 1 + player.getRandom().nextInt(3); // 1 a 3 encantamentos aleatórios
+            int numEnchants = 1 + player.getRandom().nextInt(3);
             
             for (int j = 0; j < numEnchants; j++) {
                 Enchantment ench = enchants.get(player.getRandom().nextInt(enchants.size()));
-                int level = 1 + player.getRandom().nextInt(5); // Níveis 1 a 5
+                int level = 1 + player.getRandom().nextInt(5);
                 map.put(ench, level);
             }
             
