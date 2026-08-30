@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "id": "sneakyenchant",
+  "version": "1.0.0",
+  "name": "Sneaky Random Enchant",
+  "description": "Encanta todo o inventario aleatoriamente ao agachar.",
+  "authors": ["SeuNome"],
+  "license": "MIT",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.sneaky.enchant.SneakyEnchant"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.11.0",
+    "minecraft": "1.16.5",
+    "java": ">=8",
+    "fabric-api": "*"
+  }
+}
